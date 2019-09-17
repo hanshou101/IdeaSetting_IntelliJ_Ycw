@@ -1,2 +1,0 @@
-# IdeaSetting_IntelliJ_Ycw
-用于Idea系列产品中的IntelliJ，Ycw版本的常见设置。
