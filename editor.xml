@@ -1,0 +1,20 @@
+<application>
+  <component name="EditorSettings">
+    <option name="USE_SOFT_WRAPS" value="" />
+    <option name="SOFT_WRAP_FILE_MASKS" value="*.md; *.txt; *.rst; *.adoc" />
+    <option name="IS_WHITESPACES_SHOWN" value="true" />
+    <option name="IS_LEADING_WHITESPACES_SHOWN" value="false" />
+    <option name="IS_INNER_WHITESPACES_SHOWN" value="false" />
+    <option name="IS_WHEEL_FONTCHANGE_ENABLED" value="true" />
+  </component>
+  <component name="TodoConfiguration">
+    <pattern pattern="\btodo\b.*" />
+    <pattern pattern="\bfixme\b.*" />
+    <pattern icon="important" useCustomColors="true" pattern="\btip\b.*">
+      <option name="FOREGROUND" value="4b9649" />
+      <option name="FONT_TYPE" value="1" />
+      <option name="EFFECT_COLOR" value="3c3f41" />
+      <option name="EFFECT_TYPE" value="1" />
+    </pattern>
+  </component>
+</application>

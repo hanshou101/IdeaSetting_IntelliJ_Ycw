@@ -1,0 +1,111 @@
+<templateSet group="Vue">
+  <template name="my_api_crud" value="// TIP 注释描述：~&#10;  $api_name$: {&#10;    //增删改查。&#10;    create(data) {&#10;      return request({&#10;        url: '/$api_prefix$',&#10;        method: 'post',&#10;        data&#10;      })&#10;    },&#10;    delete(data) {&#10;      return request({&#10;        url: '/$api_prefix$',&#10;        method: 'delete',&#10;        data&#10;      })&#10;    },&#10;    update(data) {&#10;      return request({&#10;        url: '/$api_prefix$',&#10;        method: 'put',&#10;        data&#10;      })&#10;    },&#10;    changeStatus(&#10;        id, status,         //用于  UrlEncoded&#10;        /* data, */         //用于  RequestBody&#10;    ) {&#10;      return request({&#10;        url: '/$api_prefix$/此处放入你特定的地址',&#10;        method: 'put',&#10;        params: {           //对应  【UrlEncoded模式】&#10;          &quot;此处放入id在Swagger上面对应的字段&quot;: id,&#10;          status,&#10;        },&#10;        // data:data,       //对应  【RequestBody模式】&#10;      })&#10;    },&#10;    list(form, current, size) {&#10;      let params = {}&#10;      formUtils.formDateRange(params, form)&#10;      params.current = current&#10;      params.size = size&#10;      return request({&#10;        url: '/$api_prefix$',&#10;        method: 'get',&#10;        params: params&#10;      })&#10;    },&#10;    getById(id) {&#10;      return request({&#10;        url: `/$api_prefix$/${id}`,&#10;        method: 'get',&#10;      })&#10;    },&#10;    //&#10;  }," description="快速生成，【增、删、改、查】四个方法的Api。" toReformat="false" toShortenFQNames="true">
+    <variable name="api_name" expression="" defaultValue="&quot;填入该api组的名字&quot;" alwaysStopAt="true" />
+    <variable name="api_prefix" expression="" defaultValue="&quot;放入你要填的url&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="Vue" value="true" />
+    </context>
+  </template>
+  <template name="my_widget_$alert" value="&#10;this.$alert('内容在此', '标题在此', {&#10;  confirmButtonText: '确认按钮',&#10;  type: 'success',                                                          //不同状态：primary,success,info,warning,error&#10;  callback: action =&gt; {&#10;    if (action === &quot;confirm&quot;) {                                              //确认&#10;&#10;    } else if (action === &quot;cancel&quot;) {                                        //取消&#10;&#10;    }&#10;  }&#10;})&#10;" description="弹出Alert对话框。仅有一个确定按钮。" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="Vue" value="true" />
+    </context>
+  </template>
+  <template name="my_widget_$message" value="this.$message({&#10;  type: 'success',                                                              //不同状态：primary,success,info,warning,error&#10;  showClose: true,                                                              //是否显示关闭按钮&#10;  message: '消息提示内容在此',&#10;  duration: 3000,                                                               //设置为0时，将不会自动关闭。默认为3000，消息消失前时间。&#10;  center: false,                                                                //默认为否：否时，为向左靠齐。是：将文字水平居中。&#10;})" description="顶部，弹出迷你Message长条提示。" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="Vue" value="true" />
+    </context>
+  </template>
+  <template name="my_widget_$confirm" value="&#10;this.$confirm('内容在此', '标题在此', {&#10;  distinguishCancelAndClose: false,                                             //默认false。是否将【点击取消】（点击取消按钮）与【点击关闭】（点击关闭按钮或遮罩层、按下 ESC 键）进行区分。&#10;  type: 'success',                                                              //不同状态：primary,success,info,warning,error&#10;  confirmButtonText: '确认按钮',&#10;  cancelButtonText: '取消按钮',&#10;})&#10;  .then(() =&gt; {                                                                 //按下【确认按钮】&#10;&#10;  })&#10;  .catch(action =&gt; {&#10;      if (action === &quot;cancel&quot;) {                                                   //触发【Cancel】事件&#10;&#10;      } else if (action === &quot;close&quot;) {                                             //触发【Close】事件&#10;&#10;      }&#10;    })&#10;&#10;" description="弹出带有【确定】和【取消】的选择对话框Confirm。" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="Vue" value="true" />
+    </context>
+  </template>
+  <template name="my_widget_$prompt" value="&#10;this.$prompt('输入框上方内容在此', '标题在此', {&#10;  confirmButtonText: '确认按钮',&#10;  cancelButtonText: '取消按钮',&#10;  inputPattern: /[\w!#$%&amp;'*+/=?^_`{|}~-]+(?:\.[\w!#$%&amp;'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?/,      //输入框的正则校验在此。&#10;  inputErrorMessage: '输入框的正则校验提示在此_邮箱格式不正确',&#10;  //inputValidator(value){},                                                //输入框的校验函数。可以返回布尔值（是否通过验证）；或字符串，若返回一个字符串, 则校验不通过；且返回结果会被赋值给inputErrorMessage（用户输入指导）&#10;}).then(({value}) =&gt; {                                                      //此处，点击确认按钮，并拿到输入框的值。&#10;&#10;}).catch(() =&gt; {                                                            //【取消】或【关闭】&#10;         &#10;})&#10;" description="弹出带输入框的对话框Prompt（并且该对话框，可以对输入内容校验）。" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="Vue" value="true" />
+    </context>
+  </template>
+  <template name="my_widget_$msgbox" value="&#10;        this.$msgbox(&#10;          {&#10;            title: '标题在此',&#10;            message: '内容在此',&#10;            confirmButtonText: '确定按钮',&#10;            showCancelButton: true,                                               //默认为false。是否显示取消按钮。&#10;            cancelButtonText: '取消按钮',&#10;            beforeClose: (                                                        // MessageBox，关闭之前的回调。会阻塞对话框的关闭。&#10;              action,                                                                 //可选action为：'confirm', 'cancel'或'close'；&#10;              instance,                                                               // MessageBox的实例；可以获得属性和方法&#10;              done,) =&gt; {                                                             // 执行done函数，可以关闭对话框&#10;&#10;            }&#10;          }&#10;        ).then((action) =&gt; {                                                      //此处，点击确认按钮。&#10;&#10;        }).catch(() =&gt; {                                                          //【取消】或【关闭】之后，触发的回调。&#10;&#10;        })&#10;" description="弹出【功能强大完善】的对话框MsgBox。Alert、Confirm、Prompt，均是MsgBox的二次包装。" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="Vue" value="true" />
+    </context>
+  </template>
+  <template name="my_widget_$notify" value="        this.$notify({&#10;          type: 'success',                                                          //不同状态：primary,success,info,warning,error&#10;          title: '标题在此',&#10;          message: '右侧提示内容在此',&#10;          duration: 4500,                                                           //设置为0，可以一直显示（直到点击关闭按钮）。默认为4500毫秒后自动关闭（比$message多1500毫秒）。&#10;          position: 'top-right',                                                    //弹出位置。默认为top-right。支持四个选项：top-right、top-left、bottom-right、bottom-left.&#10;          offset: 0,                                                                //消息框，距屏幕边缘的偏移量。默认为0。（注意在同一时刻，所有的 Notification 实例应当具有一个相同的偏移量。）&#10;          showClose: true,                                                          //默认为true。是否显示关闭按钮。&#10;        })" description="右侧，弹出Notify长方矩形的提示框。" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="Vue" value="true" />
+    </context>
+  </template>
+  <template name="my_rules_form_check" value="&#10;      rules: {&#10;        &quot;必须要填项&quot;: [{&#10;          required: true, message: '这一项是必填的',&#10;        }],&#10;        &quot;不同监听时机&quot;: [{&#10;          required: true, message: '同时监听change_blur事件', trigger: &quot;change,blur&quot;,&#10;        }],&#10;        &quot;校验指定的输入内容类型&quot;: [{&#10;          type: &quot;number,array,string&quot;,&#10;          require: true, message: '检测是否数字_列表_字符串', trigger: &quot;change,blur&quot;,&#10;        }],&#10;        &quot;自定义validator验证器&quot;: [{&#10;          require: true, validator: (rule, value, callback) =&gt; {&#10;            if (value == '错误的条件') {&#10;              callback(new Error('提示用户'))     //验证不通过。&#10;            } else {&#10;              callback()                //条件正常，验证通过。&#10;            }&#10;          }, trigger: &quot;change,blur&quot;,&#10;        }],&#10;        &quot;带transform前置快捷转化的规则&quot;: [{&#10;          require: true, message: &quot;这是经过转化之后_再进行的校验&quot;, trigger: &quot;change&quot;, transform(value) {&#10;            //  value = parseFloat(value)&#10;            return value    // return之前，可以对value进行部分转化。（比如字符串转数字，数字转字符串）&#10;          },&#10;        }],&#10;      },&#10;" description="常见的&lt;el-form&gt;表单校验项，校验规则" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="Vue" value="true" />
+    </context>
+  </template>
+  <template name="my_commonUI_el_select" value="el-form-item :label=&quot;$t('你的国际化语言地址')&quot; prop=&quot;对应的表单校验值&quot;&gt;&#10;        &lt;el-select v-model=&quot;绑定某个Form.的某个值&quot; &#10;            class=&quot;form-input&quot; clearable&gt;&#10;          &lt;el-option v-for=&quot;(item,index) in 可选择列表_必须是列表_item元素_index索引  &quot;&#10;                 :key=&quot;index&quot;&#10;                 :label=&quot;item.标签名&quot;&#10;                 :value=&quot;item.选项真值&quot;&gt;&lt;/el-option&gt;&#10;                 &#10;          &lt;!--&amp;lt;!&amp;ndash;禁用&amp;ndash;&amp;gt;--&gt;&#10;          &lt;!--&lt;el-option key=&quot;0&quot; :value=&quot;0&quot;--&gt;&#10;                     &lt;!--:label=&quot;$t('form.Disable')&quot;&gt;&lt;/el-option&gt;--&gt;&#10;          &lt;!--&amp;lt;!&amp;ndash;启用&amp;ndash;&amp;gt;--&gt;&#10;          &lt;!--&lt;el-option key=&quot;1&quot; :value=&quot;1&quot;--&gt;&#10;                     &lt;!--:label=&quot;$t('form.Enable')&quot;&gt;&lt;/el-option&gt;--&gt;       &#10;          &#10;        &lt;/el-select&gt;&#10;    &lt;/el-form-item&gt;" description="通用的&lt;el-select&gt;选项提供" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="HTML" value="true" />
+      <option name="Vue" value="true" />
+    </context>
+  </template>
+  <template name="my_commonUI_el_upload" value="el-form-item :label=&quot;$t('你的国际化语言地址')&quot; prop=&quot;对应的表单校验值&quot;&gt;&#10;    &lt;!--常用于单一图片上传，如：用户头像上传--&gt;&#10;    &lt;!--handleUploadSuccess，默认将成功url，传递到this.ruleForm.value（真的就叫value）--&gt;&#10;    &lt;el-upload&#10;      class=&quot;avatar-uploader&quot;&#10;      :action=&quot;uploadHost&quot;&#10;      :show-file-list=&quot;false&quot;&#10;      :on-success=&quot;handleUploadSuccess&quot;&#10;      :data=&quot;uploadData&quot;&#10;      :before-upload=&quot;beforeUpload&quot;&#10;    &gt;&#10;      &lt;img v-if=&quot;绑定的某个Form.的用于存放图片Url的值_默认建议为null_可能需要forceUpdate强制渲染&quot;&#10;           :src=&quot;绑定的某个Form.的用于存放图片Url的值_默认建议为null_可能需要forceUpdate强制渲染&quot;&#10;           class=&quot;avatar&quot;&gt;&#10;      &lt;i v-else class=&quot;el-icon-plus avatar-uploader-icon&quot;&gt;&lt;/i&gt;&#10;    &lt;/el-upload&gt;&#10;  &lt;/el-form-item&gt;" description="通用的&lt;el-upload&gt;单张图片上传提供" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="HTML" value="true" />
+      <option name="Vue" value="true" />
+    </context>
+  </template>
+  <template name="my_commonUI_el_datePicker" value="el-form-item :label=&quot;$t('form.Time_Picker_Label')&quot;&gt;&#10;        &lt;!--daterange，选择日期+起始范围。--&gt;&#10;        &lt;!--format，显示格式。value-format，双向绑定的数据格式。--&gt;&#10;        &lt;!--editable，用户是否可以键盘输入时间值。clearable，清除按钮。--&gt;&#10;        &lt;el-date-picker v-model=&quot;绑定某个Form.的某个值&quot;&#10;                        type=&quot;daterange&quot;&#10;                        format=&quot;yyyy-MM-dd&quot;&#10;                        value-format=&quot;yyyy-MM-dd&quot;&#10;                        :start-placeholder=&quot;$t('form.Time_Picker_Start_Time')&quot;&#10;                        :end-placeholder=&quot;$t('form.Time_Picker_End_Time')&quot;&#10;                        class=&quot;widthauto&quot; :editable=&quot;false&quot; clearable&gt;&#10;        &lt;/el-date-picker&gt;&#10;      &lt;/el-form-item&gt;" description="通用的&lt;el-date-picker&gt;时间选择提供" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="HTML" value="true" />
+      <option name="Vue" value="true" />
+    </context>
+  </template>
+  <template name="my_commonUI_el_table_img" value="el-table-column&#10;        :label=&quot;$t('你的国际化语言地址')&quot;&gt;&#10;        &lt;template slot-scope=&quot;scope&quot;&gt;&#10;          &lt;img :src=&quot;scope.row.你的图片地址&quot;&#10;               class=&quot;logoImg&quot;/&gt;&#10;        &lt;/template&gt;&#10;      &lt;/el-table-column&gt;&#10;" description="通用的&lt;el-table&gt;中的图片&lt;img&gt;。" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="HTML" value="true" />
+      <option name="Vue" value="true" />
+    </context>
+  </template>
+  <template name="my_commonUI_el_row_col" value="el-row&#10;        :gutter=&quot;0&quot;&#10;        type=&quot;flex&quot;&gt;&#10;        &lt;!--【el-row中】:gutter，每一栏之间的间隔。--&gt;&#10;        &lt;!--【el-col中】:offset，向右偏移的栏数（一行总共24栏）。--&gt;&#10;        &lt;!--【el-col中】:justify，启用flex布局。可以设置一栏的【水平排版】方式。start, center, end, space-between, space-around。默认start。--&gt;&#10;        &lt;!--【el-col中】:align，启用flex布局。可以设置一栏的【垂直】方式。top, middle, bottom。默认top。--&gt;&#10;        &lt;!--【el-col中】响应式布局，xs、sm、md、lg 和 xl。一条龙设置好各种屏幕尺寸下，显示比例。--&gt;&#10;        &lt;el-col :span=&quot;8&quot; :offset=&quot;0&quot; :justify=&quot;'start'&quot; :align=&quot;'middle'&quot;&gt;&#10;          &lt;div&gt;&lt;/div&gt;&#10;        &lt;/el-col&gt;&#10;        &lt;el-col :span=&quot;8&quot; :offset=&quot;0&quot; :justify=&quot;'start'&quot; :align=&quot;'middle'&quot;&gt;&#10;          &lt;div&gt;&lt;/div&gt;&#10;        &lt;/el-col&gt;&#10;        &lt;el-col :span=&quot;8&quot; :offset=&quot;0&quot; :justify=&quot;'start'&quot; :align=&quot;'middle'&quot;&gt;&#10;          &lt;div&gt;&lt;/div&gt;&#10;        &lt;/el-col&gt;&#10;      &lt;/el-row&gt;&#10;" description="通用的&lt;el-row&gt;布局和&lt;el-col&gt;布局提供" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="HTML" value="true" />
+      <option name="Vue" value="true" />
+    </context>
+  </template>
+  <template name="my_commonUI_el_tabs" value="el-tabs v-model=&quot;在这里_当前激活标签的name值_双向绑定&quot;&#10;               @tab-click=&quot;(click_tab,click_event)=&gt;{}&quot;&#10;               type=&quot;border-card&quot;&gt;&#10;&#10;        &lt;el-tab-pane :label=&quot;'显示的标签'&quot;&#10;                     :name=&quot;'标签所对应的值'&quot;&gt;&#10;          &lt;div&gt;&lt;/div&gt;&#10;        &lt;/el-tab-pane&gt;&#10;        &#10;      &lt;/el-tabs&gt;&#10;" description="通用的&lt;el-tabs&gt;多选项卡提供" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="HTML" value="true" />
+      <option name="Vue" value="true" />
+    </context>
+  </template>
+  <template name="my_commonUI_el_card" value="el-card&#10;        :body-style=&quot;{/*在这里_定义body部分的_样式_如最外层padding*/}&quot;&#10;        shadow=&quot;hover&quot;&#10;        class=&quot;box-card&quot;&gt;&#10;        &lt;!--【el-card】:shadow，设置阴影的显示时机。always ,hover ,never。默认always。--&gt;&#10;&#10;        &lt;div slot=&quot;header&quot;&gt;&#10;          &lt;span&gt;在这里_标题&lt;/span&gt;&#10;        &lt;/div&gt;&#10;&#10;        &lt;div&gt;&#10;          在这里_列表内容&#10;        &lt;/div&gt;&#10;&#10;      &lt;/el-card&gt;&#10;" description="通用的&lt;el-card&gt;卡片容器提供" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="HTML" value="true" />
+      <option name="Vue" value="true" />
+    </context>
+  </template>
+  <template name="my_customUI_multilang_tag" value="el-table-column&#10;        :label=&quot;$t('你的国际化语言地址')&quot;&#10;        prop=&quot;对应的表单校验值&quot;&gt;&#10;        &lt;template slot-scope=&quot;scope&quot;&gt;&#10;          &lt;MultiLangTag :data=&quot;scope.row.的某个值&quot;&gt;&lt;/MultiLangTag&gt;&#10;        &lt;/template&gt;&#10;      &lt;/el-table-column&gt;&#10;      &lt;!--&#10;        import MultiLangTag from '../../components/MultiLang/MultiLangTag' &#10;      --&gt;" description="用于多个语言的&lt;el-tag&gt;标签彩色显示。" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="HTML" value="true" />
+      <option name="Vue" value="true" />
+    </context>
+  </template>
+  <template name="my_clone_postForm" value="&#10;        let postForm = {&#10;          // '筛选后保留的key' : '筛选后保留的value' ,&#10;        }&#10;        for (let key in postForm) {&#10;          postForm[key] = this.ruleForm[key]      //按照需要，去取this.ruleForm里面的同名字段。&#10;        }&#10;" description="从this.ruleForm克隆出一条按需分配的postData" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="Vue" value="true" />
+    </context>
+  </template>
+  <template name="my_commonUI_el_dialog" value="el-dialog&#10;      :title=&quot;$t($yourDialogData$.title)&quot;&#10;      :visible.sync=&quot;$yourDialogData$.visible&quot;&#10;      @close=&quot;()=&gt;{/*$yourDialogData$.closeCallback*/}&quot;&#10;      width=&quot;60%&quot;&gt;&#10;      &lt;!--自定义对话框开始--&gt;&#10;&#10;      &lt;!--总表单--&gt;&#10;      &lt;el-form :model=&quot;$yourDialogData$.form&quot; :rules=&quot;$yourDialogData$.rule&quot; :ref=&quot;$yourDialogData$.refName&quot;&#10;               label-width=&quot;180px&quot; class=&quot;dialog-container&quot;&gt;&#10;&#10;        &lt;!--普通文本输入值--&gt;&#10;        &lt;el-form-item :label=&quot;$t('你的国际化语言地址')&quot; prop=&quot;对应的表单校验值&quot;&gt;&#10;          &lt;el-input v-model=&quot;$yourDialogData$.form.的某个值&quot; class=&quot;form-input&quot; clearable&gt;&lt;/el-input&gt;&#10;        &lt;/el-form-item&gt;&#10;&#10;        &lt;el-form-item :label=&quot;$t('你的国际化语言地址')&quot; prop=&quot;对应的表单校验值&quot;&gt;&#10;          &lt;el-select v-model=&quot;$yourDialogData$.form.的某个值&quot;&#10;                     class=&quot;form-input&quot; clearable&gt;&#10;            &lt;el-option v-for=&quot;(item,index) in 可选择列表_必须是列表_item元素_index索引  &quot;&#10;                       :key=&quot;index&quot;&#10;                       :label=&quot;item.标签名&quot;&#10;                       :value=&quot;item.选项真值&quot;&gt;&lt;/el-option&gt;&#10;          &lt;/el-select&gt;&#10;        &lt;/el-form-item&gt;&#10;&#10;        &lt;MultiLangPlus :ruleForm=&quot;$yourDialogData$.form&quot; :rules=&quot;$yourDialogData$.rule&quot; :ruleFormRef=&quot;$yourDialogData$.refName&quot;&#10;                       :labelName=&quot;$yourDialogData$.labelName&quot;&gt;&lt;/MultiLangPlus&gt;&#10;        &lt;!--。--&gt;&#10;      &lt;/el-form&gt;&#10;&#10;      &lt;!--对话框按钮组：确定、取消--&gt;&#10;      &lt;span slot=&quot;footer&quot; class=&quot;dialog-footer&quot;&gt;&#10;            &lt;!--取消按钮。将会把this.dialogVisible值变为false--&gt;&#10;            &lt;el-button @click=&quot;$yourDialogData$.visible = false&quot;&gt;&#10;              {{$t('dialog.Cancel')}}&#10;            &lt;/el-button&gt;&#10;&#10;        &lt;!--确定按钮。submitForm方法提交ruleFormRef表单。--&gt;&#10;            &lt;el-button @click=&quot;$yourDialogData$.clickCallback&quot;&#10;                       type=&quot;primary&quot;&gt;&#10;              {{$t('dialog.Confirm')}}&#10;            &lt;/el-button&gt;&#10;        &lt;/span&gt;&#10;&#10;      &lt;!--自定义对话框结束--&gt;&#10;    &lt;/el-dialog&gt;&#10;&#10;&#10;    &lt;!--&#10;        $yourDialogData$: {&#10;          title: '标题',&#10;          visible: false,&#10;          refName: '$yourDialogData$Ref',&#10;          labelName: '',&#10;          form: {&#10;            //&#10;          },&#10;          rule: {&#10;            //&#10;          },&#10;          closeCallback() {&#10;&#10;          },&#10;          clickCallback() {&#10;&#10;          },&#10;        },&#10;    --&gt;" description="通用的&lt;el-dialog&gt;选项提供（内附带一张表单）" toReformat="true" toShortenFQNames="true">
+    <variable name="yourDialogData" expression="" defaultValue="&quot;yourDialogData&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="HTML" value="true" />
+      <option name="Vue" value="true" />
+    </context>
+  </template>
+  <template name="my_templateUI_dialog_box" value="$yourName$Dialog :ref=&quot;'$yourName$DialogRef'&quot;&#10;                 v-if=&quot;$yourName$Dialog_visible&quot;&#10;                 @refreshList=&quot;_getList&quot;&#10;                 @closeDialogEvent=&quot;$yourName$Dialog_visible = false&quot;&gt;&#10;    &lt;/$yourName$Dialog&gt;&#10;&#10;    &lt;!--&#10;        $yourName$Dialog_visible: false,     //某一个对话框的控制器是否可见。放在this.data里面。&#10;    --&gt;&#10;    &#10;    &lt;!--&#10;        import $yourName$Dialog from './component/你的Dialog地址'       //导入，并且放在Vue的components里面。&#10;    --&gt;&#10;    &#10;    &lt;!--&#10;        // 当启动对话框时，使用这个方法。&#10;        this.$yourName$Dialog_visible = true&#10;        this.$nextTick(() =&gt; {&#10;            this.$refs.$yourName$DialogRef.showDialog(2, Object.assing({}, row))    //传入数据。&#10;        })&#10;    --&gt;" description="提供基于Dialog文件模板，的多个Dialog开箱即用导入" toReformat="false" toShortenFQNames="true">
+    <variable name="yourName" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="HTML" value="true" />
+      <option name="Vue" value="true" />
+    </context>
+  </template>
+</templateSet>
